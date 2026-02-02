@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Project Management System</title>
+    <link rel="stylesheet" href="student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Student Dashboard</h1>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="date-display" id="currentDate"></div>
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=4FC3A1&color=fff" alt="Student">
+                    <div class="user-details">
+                        <h3>John Doe</h3>
+                        <p>Computer Science - Group Alpha</p>
+                    </div>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-user"></i> Profile</a>
+                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" id="themeToggleStudent"><i class="fas fa-moon"></i> Dark Mode</a>
+                            <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="main-nav">
+            <ul>
+                <li class="active" data-page="dashboard">
+                    <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li data-page="view-project">
+                    <a href="#"><i class="fas fa-project-diagram"></i> View Project</a>
+                </li>
+                <li data-page="submit-project">
+                    <a href="#"><i class="fas fa-upload"></i> Submit Project</a>
+                </li>
+                <li data-page="submission-status">
+                    <a href="#"><i class="fas fa-history"></i> Submission Status</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Page content will be loaded here -->
+                <div id="pageContent">
+                    <!-- Dashboard content loaded by default -->
+                    <div class="welcome-section">
+                        <h2>Welcome back, John!</h2>
+                        <p>Here's an overview of your current project status and upcoming deadlines.</p>
+                    </div>
+
+                    <!-- Stats Overview -->
+                    <div class="stats-overview">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Current Project</h3>
+                                <p class="stat-number">E-Commerce Platform</p>
+                                <p class="stat-detail">Due in 7 days</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Project Guide</h3>
+                                <p class="stat-number">Dr. Smith</p>
+                                <p class="stat-detail">Computer Science Dept.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Group Members</h3>
+                                <p class="stat-number">3 Members</p>
+                                <p class="stat-detail">John, Jane, Bob</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Submission Status</h3>
+                                <p class="stat-number">Pending</p>
+                                <p class="stat-detail">Not submitted yet</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="actions-grid">
+                            <button class="action-btn" data-page="view-project">
+                                <i class="fas fa-eye"></i>
+                                <span>View Project Details</span>
+                            </button>
+                            <button class="action-btn" data-page="submit-project">
+                                <i class="fas fa-upload"></i>
+                                <span>Submit Project</span>
+                            </button>
+                            <button class="action-btn" onclick="viewGuideContact()">
+                                <i class="fas fa-comments"></i>
+                                <span>Contact Guide</span>
+                            </button>
+                            <button class="action-btn" onclick="downloadResources()">
+                                <i class="fas fa-download"></i>
+                                <span>Download Resources</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Deadlines -->
+                    <div class="deadlines-section">
+                        <div class="section-header">
+                            <h3>Upcoming Deadlines</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="deadline-list">
+                            <div class="deadline-item urgent">
+                                <div class="deadline-icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="deadline-content">
+                                    <h4>Project Submission</h4>
+                                    <p>E-Commerce Platform - Final Submission</p>
+                                    <span class="deadline-time">Due: Dec 15, 2023 (7 days left)</span>
+                                </div>
+                            </div>
+                            <div class="deadline-item">
+                                <div class="deadline-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="deadline-content">
+                                    <h4>Progress Report</h4>
+                                    <p>Submit weekly progress report to guide</p>
+                                    <span class="deadline-time">Due: Dec 8, 2023 (Tomorrow)</span>
+                                </div>
+                            </div>
+                            <div class="deadline-item">
+                                <div class="deadline-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div class="deadline-content">
+                                    <h4>Guide Meeting</h4>
+                                    <p>Weekly meeting with Dr. Smith</p>
+                                    <span class="deadline-time">Dec 10, 2023 (3 days left)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon success">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <p>Project requirements reviewed and approved</p>
+                                    <span class="timeline-time">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon info">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <p>Guide provided feedback on initial design</p>
+                                    <span class="timeline-time">4 days ago</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <p>Reminder: Progress report due this week</p>
+                                    <span class="timeline-time">5 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Notification Toast -->
+        <div class="notification-toast" id="notificationToast">
+            <div class="toast-content">
+                <i class="fas fa-check-circle"></i>
+                <p>Operation completed successfully!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="student.js"></script>
+</body>
+</html>
